@@ -5,8 +5,8 @@ Repo of "Channel Attention GAN Trained with Enhanced Dataset for Single Image Sh
 The full source code will be available once the paper is accepted.
 
 ## datasets
-* [ISTD](https://github.com/DeepInsight-PCALab/ST-CGAN)
-* [SRD](http://www.shengfenghe.com/publications/)
+* [ISTD](https://github.com/DeepInsight-PCALab/ST-CGAN) : ST-CGAN
+* [SRD](http://www.shengfenghe.com/publications/) : Deshadow-Net
 * ISTD+, SRD+  
 Datasets are not available but you can create the dataset by applying the [MATLAB code](https://www3.cs.stonybrook.edu/~cvl/projects/SID/index.html) provided by the authors.
 
