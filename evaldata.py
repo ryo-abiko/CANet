@@ -46,7 +46,7 @@ def SSIMinsRGB(img1, img2):
 
     return ssim(img1, img2, data_range=1.0, multichannel=True)
 
-# ------- setting --------
+# ------- settings --------
 parser = argparse.ArgumentParser()
 parser.add_argument("--method_name", type=str, default="CANet", help="Folder name to evaluate")
 parser.add_argument("--dataset_name", type=str, default="ISTD", help="Folder Name of the dataset")

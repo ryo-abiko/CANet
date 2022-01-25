@@ -2,3 +2,6 @@
 __pycache__/
 datasets/
 results/
+output_CANet/
+train_output/
+*.pth
