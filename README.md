@@ -1,8 +1,7 @@
 
 # Channel Attention GAN Trained with Enhanced Dataset for Single-Image Shadow Removal (CANet)
 
-Our paper is going to be published in IEEE Access.
-Please refer the paper after publication.
+Our Paper is published in IEEE Access. You can check the paper [here](https://ieeexplore.ieee.org/document/9694637).
 
 ![Overview](images/overview.png)
 
@@ -90,4 +89,14 @@ Comparison with the other methods. Please see our paper for the details.
 ![Overview](images/results.jpg)
 
 ## Citation
-We will update here after publication.
+```
+@ARTICLE{ryo2022,
+  author={Ryo Abiko and Masaaki Ikehara},
+  journal={IEEE Access}, 
+  title={Channel Attention GAN Trained With Enhanced Dataset for Single-Image Shadow Removal}, 
+  year={2022},
+  volume={10},
+  number={},
+  pages={12322-12333},
+  doi={10.1109/ACCESS.2022.3147063}}
+```
