@@ -62,20 +62,56 @@ class ImageDataset(Dataset):
         self.resize = transforms.Resize((512, 512), transforms.InterpolationMode.NEAREST)
         self.totensor = transforms.ToTensor()
 
+        # Check if all paths are specified
+        ErrPath = ""
+        if shadow_dir_path == "":
+            ErrPath = "shadow_dir_path"
+        elif gt_dir_path == "":
+            ErrPath = "gt_dir_path"
+        elif mask_dir_path == "":
+            ErrPath = "mask_dir_path"
+        elif mask_edge_dir_path == "":
+            ErrPath = "mask_edge_dir_path"
+
+        if ErrPath != "":
+            print("[ERROR] Please specify the " + ErrPath +".")
+            exit()
+
         # get pass
         self.files_input = sorted(glob.glob(shadow_dir_path + "/*.*"))
         self.files_mask = sorted(glob.glob(mask_dir_path + "/*.*"))
         self.files_mask_edge = sorted(glob.glob(mask_edge_dir_path + "/*.*"))
         self.files_gt = sorted(glob.glob(gt_dir_path + "/*.*"))
 
-        # check image numbers
-        if abs(len(self.files_input) - len(self.files_mask)) + abs(len(self.files_input) - len(self.files_mask_edge)) + abs(len(self.files_input) - len(self.files_gt)) > 0:
-            print("[ERROR] Image numbers are not the same. Please check path.")
+        # check if there is image
+        ErrPath = ""
+        if len(self.files_input) == 0:
+            ErrPath = "shadow_dir_path (" + shadow_dir_path + ")"
+        elif len(self.files_mask) == 0: 
+            ErrPath = "mask_dir_path (" + mask_dir_path + ")"
+        elif len(self.files_mask_edge) == 0:
+            ErrPath = "mask_edge_dir_path (" + mask_edge_dir_path + ")"
+        elif len(self.files_gt) == 0:
+            ErrPath = "gt_dir_path (" + gt_dir_path + ")"
+
+        if ErrPath != "":
+            print("[ERROR] We found no image. Please check the images in " + ErrPath + ".")
             exit()
 
-        if len(self.files_input) == 0 or len(self.files_mask) == 0 or len(self.files_mask_edge) == 0 or len(self.files_gt) == 0:
-            print("[ERROR] We found no image. Please check path.")
+        # Check if the image numbers are the same
+        ErrPath = ""
+        if abs(len(self.files_input) - len(self.files_mask)) > 0:
+            ErrPath = "mask_dir_path (" + mask_dir_path + ")"
+        elif abs(len(self.files_input) - len(self.files_mask_edge)) > 0:
+            ErrPath = "mask_edge_dir_path (" + mask_edge_dir_path + ")"
+        elif abs(len(self.files_input) - len(self.files_gt)) > 0:
+            ErrPath = "gt_dir_path (" + gt_dir_path + ")"
+
+        if ErrPath != "":
+            print("[ERROR] The number of images is not same with the ground truth images. Please check the images under" + ErrPath + " or shadow_dir_path (" + shadow_dir_path + ").")
             exit()
+
+        
 
 
     def __getitem__(self, img_index):

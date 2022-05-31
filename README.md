@@ -25,7 +25,7 @@ conda install -c conda-forge scikit-image -y
 ```
 
 ## Train
-1. Prepare the training dataset.
+1. Prepare the training dataset. You need to prepare the edge mask by yourself. Run makemask.m with MATLAB on the mask images to obtain the edge mask dataset.
 2. Execute the following command.
 ```
 (This is an example.)
